@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="refresh" content="0;url=https://github.com/tun127/SMind/releases/download/v0.9.0/SMind-0.9.0-x64-portable.exe">
 <title>正在下载 SMind 免安装版…</title>
 <!--
-  稳定下载入口：/download/portable/ → 直链秒跳，不依赖 api.github.com（国内可直连）。
-  ⚠️ 每次发新版：改 3 处直链（meta refresh + 正文两处）为新版本的 exe 地址。
+  稳定下载入口：/download/portable/
+  策略：优先走国内镜像 dl.smindapp.cn（Cloudflare R2），2.5 秒内没响应自动回退 GitHub 直链；
+  镜像未上线时本页天然回退，无需等 R2 配好。
+  ⚠️ 每次发新版：改下方 MIRROR / FALLBACK 两条 URL（各一行）为新版本地址。
   配色与主站 index.html 的 :root 保持一致（--accent:#4f5be7 等）。
 -->
 <style>
@@ -58,7 +59,7 @@
   </div>
   <h1>正在下载 SMind 免安装版</h1>
   <p class="meta">v0.9.0 · 约 108 MB · Windows 10/11 64 位 · 下载已<b>自动开始</b></p>
-  <a class="main-dl" href="https://github.com/tun127/SMind/releases/download/v0.9.0/SMind-0.9.0-x64-portable.exe">没有开始？点这里直接下载</a>
+  <a class="main-dl" id="dl" href="https://github.com/tun127/SMind/releases/download/v0.9.0/SMind-0.9.0-x64-portable.exe">没有开始？点这里直接下载</a>
   <div class="tips">
     <b>免安装版怎么用？</b><br>
     双击即用、不改系统（绿色软件）；想打开 .xmind 文件，把它拖到 exe 图标或已打开的窗口里。
@@ -70,5 +71,18 @@
   </p>
   <p class="foot">SMind · 本地优先的思维导图软件 · 无账号、无服务器</p>
 </div>
+<script>
+(function () {
+  var MIRROR  = 'https://dl.smindapp.cn/SMind-0.9.0-x64-portable.exe'
+  var FALLBACK = 'https://github.com/tun127/SMind/releases/download/v0.9.0/SMind-0.9.0-x64-portable.exe'
+  function go (url) { location.replace(url) }
+  var timer = setTimeout(function () { go(FALLBACK) }, 2500)
+  fetch(MIRROR, { method: 'HEAD' })
+    .then(function (r) { clearTimeout(timer); go(r.ok ? MIRROR : FALLBACK) })
+    .catch(function () { clearTimeout(timer); go(FALLBACK) })
+  document.getElementById('dl').href = FALLBACK
+})()
+</script>
+<noscript><meta http-equiv="refresh" content="0;url=https://github.com/tun127/SMind/releases/download/v0.9.0/SMind-0.9.0-x64-portable.exe"></noscript>
 </body>
 </html>
