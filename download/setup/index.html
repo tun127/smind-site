@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="UTF-8">
+<title>正在开始下载 SMind 安装版…</title>
+<!--
+  稳定下载入口：/download/setup/
+  自动查询 GitHub 最新 Release 并跳转到「安装版」exe（文件名以 -x64-setup.exe 结尾的资产）。
+  以后发新版无需改本页；API 不可用时回退到 Releases 页。
+-->
+<p style="font-family:system-ui,sans-serif">正在为你获取最新版 SMind 安装包…如果没有自动开始下载，
+<a href="https://github.com/tun127/SMind/releases">点这里打开下载页</a>。</p>
+<script>
+(async () => {
+  const FALLBACK = 'https://github.com/tun127/SMind/releases';
+  try {
+    const r = await fetch('https://api.github.com/repos/tun127/SMind/releases/latest');
+    const rel = await r.json();
+    const asset = (rel.assets || []).find(a => a.name.endsWith('-x64-setup.exe'));
+    if (asset && asset.browser_download_url) { location.replace(asset.browser_download_url); return; }
+  } catch (e) { /* 回退 */ }
+  location.replace(FALLBACK);
+})();
+</script>
