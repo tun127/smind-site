@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>正在下载 SMind 安装版…</title>
+<title>下载 SMind 安装版</title>
 <!--
   稳定下载入口：/download/setup/
-  策略：优先走国内镜像 dl.smindapp.cn（Cloudflare R2），2.5 秒内没响应自动回退 GitHub 直链；
-  镜像未上线时本页天然回退，无需等 R2 配好。
-  ⚠️ 每次发新版：改下方 MIRROR / FALLBACK 两条 URL（各一行）为新版本地址。
+  策略：**不自动触发下载**——用户点大按钮才下一次（避免浏览器「询问保存位置」反复弹框，
+  也避免下载失败后浏览器重试导致的重复弹框）。按钮优先走镜像，失败自动回退 GitHub。
+  ⚠️ 每次发新版：改 MIRROR / FALLBACK 两条 URL。
   配色与主站 index.html 的 :root 保持一致（--accent:#4f5be7 等）。
 -->
 <style>
@@ -26,15 +26,9 @@
   .drop{width:84px;height:84px;margin:0 auto 20px;border-radius:50%;
         background:linear-gradient(135deg,var(--accent),var(--accent-dark));
         display:flex;align-items:center;justify-content:center;
-        box-shadow:0 10px 26px rgba(79,91,231,.35);position:relative}
-  .drop::after{content:"";position:absolute;inset:-8px;border-radius:50%;
-        border:2px solid rgba(79,91,231,.25);animation:pulse 1.6s ease-out infinite}
-  @keyframes pulse{0%{transform:scale(.85);opacity:1}100%{transform:scale(1.25);opacity:0}}
-  .drop svg{animation:bob 1.2s ease-in-out infinite}
-  @keyframes bob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
+        box-shadow:0 10px 26px rgba(79,91,231,.35)}
   h1{font-size:22px;margin-bottom:8px}
   .meta{color:var(--muted);font-size:14.5px;margin-bottom:22px}
-  .meta b{color:var(--ok)}
   .tips{background:var(--bg);border:1px solid var(--line);border-radius:12px;
         padding:14px 16px;font-size:13.5px;color:var(--muted);text-align:left;margin-bottom:24px}
   .tips b{color:var(--ink)}
@@ -43,9 +37,10 @@
   .links a:hover{background:rgba(79,91,231,.08)}
   .foot{margin-top:26px;font-size:12.5px;color:var(--muted)}
   .main-dl{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
-        padding:10px 26px;border-radius:10px;font-weight:600;margin-bottom:18px;
+        padding:12px 34px;border-radius:10px;font-weight:600;font-size:16px;margin-bottom:18px;
         box-shadow:0 6px 16px rgba(79,91,231,.3)}
   .main-dl:hover{background:var(--accent-dark)}
+  .alt{font-size:13.5px;color:var(--muted);margin-bottom:18px}
 </style>
 </head>
 <body>
@@ -57,9 +52,10 @@
   <div class="drop">
     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m6 11 6 6 6-6"/><path d="M5 21h14"/></svg>
   </div>
-  <h1>正在下载 SMind 安装版</h1>
-  <p class="meta">v0.9.0 · 约 108 MB · Windows 10/11 64 位 · 下载已<b>自动开始</b></p>
-  <a class="main-dl" id="dl" href="https://github.com/tun127/SMind/releases/download/v0.9.0/SMind-0.9.0-x64-setup.exe">没有开始？点这里直接下载</a>
+  <h1>下载 SMind 安装版</h1>
+  <p class="meta">v0.9.0 · 约 108 MB · Windows 10/11 64 位 · 免费</p>
+  <a class="main-dl" id="dl" href="https://github.com/tun127/SMind/releases/download/v0.9.0/SMind-0.9.0-x64-setup.exe">⬇ 下载安装版</a>
+  <p class="alt">点一下就开始下载；优先走高速线路，慢了会自动换备用线路</p>
   <div class="tips">
     <b>首次运行提示「未知发布者」？</b><br>
     本软件暂无代码签名证书：点「更多信息」→「仍要运行」即可，不是病毒。
@@ -73,16 +69,13 @@
 </div>
 <script>
 (function () {
-  var MIRROR  = 'https://dl.smindapp.cn/SMind-0.9.0-x64-setup.exe'
+  var MIRROR   = 'https://dl.smindapp.cn/SMind-0.9.0-x64-setup.exe'
   var FALLBACK = 'https://github.com/tun127/SMind/releases/download/v0.9.0/SMind-0.9.0-x64-setup.exe'
-  function go (url) { location.replace(url) }
-  var timer = setTimeout(function () { go(FALLBACK) }, 2500)
+  var btn = document.getElementById('dl')
   fetch(MIRROR, { method: 'HEAD' })
-    .then(function (r) { clearTimeout(timer); go(r.ok ? MIRROR : FALLBACK) })
-    .catch(function () { clearTimeout(timer); go(FALLBACK) })
-  document.getElementById('dl').href = FALLBACK
+    .then(function (r) { if (r.ok) btn.href = MIRROR })
+    .catch(function () { /* 保持 FALLBACK */ })
 })()
 </script>
-<noscript><meta http-equiv="refresh" content="0;url=https://github.com/tun127/SMind/releases/download/v0.9.0/SMind-0.9.0-x64-setup.exe"></noscript>
 </body>
 </html>
