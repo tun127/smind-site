@@ -159,6 +159,17 @@
   .pillar h3{font-size:18px;margin-bottom:8px}
   .pillar p{font-size:15px;color:var(--muted);max-width:none}
 
+  /* 三个 S（品牌锚点）——刻意不用卡片，改用一条细带 + 竖分隔线，避免与上面三支柱撞形 */
+  .ss{display:grid;grid-template-columns:repeat(3,1fr);margin-top:6px;
+      background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+      box-shadow:var(--shadow-sm);overflow:hidden}
+  .ss-item{padding:26px 22px;border-left:1px solid var(--line)}
+  .ss-item:first-child{border-left:0}
+  .ss-item b{display:block;font-size:34px;font-weight:650;letter-spacing:-.02em;
+             color:var(--accent);line-height:1.05}
+  .ss-item strong{display:block;margin-top:8px;font-size:15.5px;font-weight:600;color:var(--ink)}
+  .ss-item p{margin:6px 0 0;font-size:13.5px;color:var(--muted);line-height:1.6;max-width:none}
+
   /* 功能卡片（12 → 6，§3.5） */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
@@ -228,6 +239,9 @@
     h1{font-size:32px}
     .hero{padding-top:56px}
     .pillars,.grid{grid-template-columns:1fr}
+    .ss{grid-template-columns:1fr}
+    .ss-item{border-left:0;border-top:1px solid var(--line);padding:20px 18px}
+    .ss-item:first-child{border-top:0}
     .hero .ctas{flex-direction:column;gap:14px}
     .hero .ctas .btn{width:100%}
     .window__bar{display:none}     /* 省高度 §3.3 退化 */
@@ -314,6 +328,28 @@
       <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M17 6.5c0-1.4-2.2-2.5-5-2.5s-5 1.1-5 2.5S9.2 9 12 9s5 1.1 5 2.5-2.2 2.5-5 2.5-5-1.1-5-2.5"/></svg></div>
       <h3>买断不订阅</h3>
       <p>核心功能与 AI 聊天永久免费；付费只有一次性的 Pro 买断。一次买断 ≈ 订阅制产品一个月的钱，永久使用。</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="three-s">
+  <h2 class="reveal">SMind 的三个 S</h2>
+  <p class="sec-sub reveal" style="--i:1">名字里的 S，写成三句实话</p>
+  <div class="ss">
+    <div class="ss-item reveal" style="--i:1">
+      <b>S</b>
+      <strong>Self · 数据是你自己的</strong>
+      <p>文件就是普通的 .xmind，存在你自己的硬盘上；离线可用，没有云端账号。</p>
+    </div>
+    <div class="ss-item reveal" style="--i:2">
+      <b>S</b>
+      <strong>Simple · 打开就能用</strong>
+      <p>下载即用、无需注册、不用另装依赖；原生 .xmind 格式，迁移成本接近零。</p>
+    </div>
+    <div class="ss-item reveal" style="--i:3">
+      <b>S</b>
+      <strong>Stable · 不会某天打不开</strong>
+      <p>不做在线激活，换电脑重粘同一串即可；买断后最后拿到的版本永久可用、永久离线。</p>
     </div>
   </div>
 </section>
