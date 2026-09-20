@@ -62,15 +62,16 @@
   }
   a{color:var(--accent);text-decoration:none}
   a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:24px;padding-right:24px}
   section{padding:var(--pad-y) 0}
 
   /* 排版 §2.4：字重 + 字距 + 行高 */
   h1,h2,h3,h4{font-weight:650;letter-spacing:-.02em;line-height:1.25}
+  h1,h2{text-wrap:balance}   /* 标题避免末行孤字；不支持的浏览器自动忽略 */
   h1{font-size:54px}
   h1 em{font-style:normal;color:var(--accent)}
   h2{font-size:31px;text-align:center;margin-bottom:12px}
-  .sec-sub{text-align:center;color:var(--muted);margin-bottom:48px;font-size:16px}
+  .sec-sub{text-align:center;color:var(--muted);margin:0 auto 48px;font-size:16px}
   p{max-width:68ch}
 
   /* 顶部滚动进度线 §3.7：scaleX 驱动，不动 width */
@@ -165,8 +166,9 @@
       box-shadow:var(--shadow-sm);overflow:hidden}
   .ss-item{padding:26px 22px;border-left:1px solid var(--line)}
   .ss-item:first-child{border-left:0}
-  .ss-item b span{color:var(--ink)}
+  .ss-item b{display:block;font-size:34px;font-weight:650;letter-spacing:-.02em;
              color:var(--accent);line-height:1.05}
+  .ss-item b span{color:var(--ink)}
   .ss-item strong{display:block;margin-top:8px;font-size:15.5px;font-weight:600;color:var(--ink)}
   .ss-item p{margin:6px 0 0;font-size:13.5px;color:var(--muted);line-height:1.6;max-width:none}
 
@@ -301,7 +303,7 @@
   </div>
 </header>
 
-<section class="wrap" id="stats" style="padding-top:64px">
+<section class="wrap" id="stats">
   <div class="stats">
     <div class="stat reveal"><b><span data-count="14">14</span></b><span>种结构（9 大族）</span></div>
     <div class="stat reveal" style="--i:1"><b><span data-count="25">25</span></b><span>个往返一致的格式样本（21 Xmind + 4 亿图）</span></div>
