@@ -136,13 +136,17 @@
                border-bottom:1px solid var(--line);background:#FCFCFD}
   .window__dot{width:10px;height:10px;border-radius:50%;background:rgba(16,24,40,.12)}
   .window img{display:block;width:100%;height:auto;border-radius:12px}
+  /* <picture> 默认是 inline：显式 block，图片的 100% 宽度才按 .window 计算 */
+  .window picture{display:block}
 
   /* 数字条 §3.8 */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-top:64px}
   .stat{text-align:center}
   .stat b{display:block;font-size:30px;font-weight:650;letter-spacing:-.02em;
           font-variant-numeric:tabular-nums;line-height:1.2}
-  .stat span{font-size:13.5px;color:var(--muted)}
+  /* 说明文字：只作用于**直接子级**的说明 span——数字被计数脚本包在自己的 span 里，
+     用后代选择器会把数字一起吃成 13.5px 灰字（数字带因此变成"三个小数字 + 大 MB"） */
+  .stat > span{font-size:13.5px;color:var(--muted)}
 
   /* 三支柱 */
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
@@ -263,7 +267,7 @@
     <div class="badge"><i class="badge__dot" aria-hidden="true"></i>v0.9 免费发布 · 源码开放</div>
     <h1>你的思维导图，<br>应该以 <em>.xmind 文件</em>的形式属于你</h1>
     <p class="sub">本地优先的思维导图软件：原生 .xmind，与 Xmind 直接互通。</p>
-    <p class="fine"><span>免安装可用</span> · <span>约 107 MB</span> · <span>Windows 10/11 64 位</span> · <span>买断制，不做订阅</span> · <span>除 AI 外全程离线</span></p>
+    <p class="fine"><span>免安装可用</span> · <span>约 108 MB</span> · <span>Windows 10/11 64 位</span> · <span>买断制，不做订阅</span> · <span>除 AI 外全程离线</span></p>
     <div class="ctas">
       <a class="btn btn-primary" href="#download">免费下载 Windows 版</a>
       <a class="link-arrow" href="https://github.com/tun127/SMind">查看源码 <span>→</span></a>
@@ -274,7 +278,11 @@
       <div class="window__bar" aria-hidden="true">
         <i class="window__dot"></i><i class="window__dot"></i><i class="window__dot"></i>
       </div>
-      <img src="./screenshot-1-overview.png" alt="SMind 界面：标记标签、关系线、边界与概要" width="2560" height="1454">
+      <picture>
+        <source type="image/webp" srcset="./screenshot-1-overview-2x.webp">
+        <img src="./screenshot-1-overview.png" alt="SMind 界面：标记标签、关系线、边界与概要"
+             width="2560" height="1454" fetchpriority="high" decoding="async">
+      </picture>
     </div>
   </div>
 </header>
@@ -282,9 +290,9 @@
 <section class="wrap" id="stats" style="padding-top:64px">
   <div class="stats">
     <div class="stat reveal"><b><span data-count="14">14</span></b><span>种结构（9 大族）</span></div>
-    <div class="stat reveal" style="--i:1"><b><span data-count="21">21</span></b><span>个 Xmind / 亿图兼容样本</span></div>
+    <div class="stat reveal" style="--i:1"><b><span data-count="25">25</span></b><span>个往返一致的格式样本（21 Xmind + 4 亿图）</span></div>
     <div class="stat reveal" style="--i:2"><b><span data-count="2753">2753</span></b><span>项内核自检断言</span></div>
-    <div class="stat reveal" style="--i:3"><b><span data-count="107">107</span> MB</b><span>安装体积（内置运行时）</span></div>
+    <div class="stat reveal" style="--i:3"><b><span data-count="108">108</span> MB</b><span>安装体积（内置运行时）</span></div>
   </div>
 </section>
 
@@ -389,7 +397,11 @@
       <div class="window__bar" aria-hidden="true">
         <i class="window__dot"></i><i class="window__dot"></i><i class="window__dot"></i>
       </div>
-      <img src="./screenshot-3-plan.png" alt="图片、附件与 LaTeX 公式" width="2560" height="1454">
+      <picture>
+        <source type="image/webp" srcset="./screenshot-3-plan-2x.webp">
+        <img src="./screenshot-3-plan.png" alt="图片、附件与 LaTeX 公式"
+             width="2560" height="1454" loading="lazy" decoding="async">
+      </picture>
     </div>
   </div>
 </section>
@@ -445,7 +457,7 @@
   <p class="sec-sub reveal" style="--i:1">更多问题进用户群或提 Issue</p>
   <details class="reveal" open><summary>用 Xmind 打开我保存的文件，颜色 / 加粗没了？</summary>
     <p>文字、结构、标记、标签、备注、图片、附件都在；局部富文本格式存在扩展字段里，Xmind 不读取。反向同理——文字内容永远无损。</p></details>
-  <details class="reveal"><summary>为什么体积 107MB？</summary>
+  <details class="reveal"><summary>为什么体积 108MB？</summary>
     <p>桌面版内置了完整运行时（与主流脑图软件同方案），换来的是真正的离线能力与本地性能。</p></details>
   <details class="reveal"><summary>免费版和 Pro 的区别？</summary>
     <p>全部导图功能与 AI 聊天永久免费；AI 改图（Agent）免费试用 30 个写回合。Pro（一次性买断 ¥39，开售首月内 ¥19 半价）解锁不限量写回合，并附商用授权 EULA。<a href="#pro">购买 Pro →</a> 免费的东西永远不会被挖走。</p></details>
