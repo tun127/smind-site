@@ -30,7 +30,8 @@
   .logo span{color:var(--accent)}
   nav a.nl{color:var(--muted);font-size:14.5px}
   nav a.nl:hover{color:var(--ink)}
-  nav .cta{margin-left:auto}
+  nav .cta{margin-left:auto;display:flex;gap:10px;align-items:center}
+  nav .btn{padding:9px 18px;font-size:14.5px}
 
   /* 按钮 */
   .btn{display:inline-block;padding:11px 26px;border-radius:10px;font-weight:600;font-size:15px;
@@ -118,7 +119,10 @@
     <a class="nl" href="#ai">AI</a>
     <a class="nl" href="#faq">常见问题</a>
     <a class="nl" href="https://github.com/tun127/SMind">GitHub</a>
-    <a class="btn btn-primary cta" href="#download">免费下载</a>
+    <div class="cta">
+      <a class="btn btn-ghost" href="https://mbd.pub/o/bread/YZaVlpdyZA==" target="_blank" rel="noopener">购买 Pro</a>
+      <a class="btn btn-primary" href="#download">免费下载</a>
+    </div>
   </div>
 </nav>
 
@@ -196,9 +200,34 @@
       </ul>
       <span class="tag tag-free">永久免费部分</span>
       <span class="tag tag-pro">Pro 买断解锁</span>
+      <div style="margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#pro">购买 Pro · 早鸟 ¥19</a>
+        <span style="font-size:13px;color:var(--muted)">一次买断，永久使用 · 限量 200 份</span>
+      </div>
     </div>
     <img class="shot" style="max-width:420px;margin:0;box-shadow:none" src="./screenshot-3-plan.png" alt="AI 项目规划示例">
   </div>
+</section>
+
+<section class="wrap" id="pro">
+  <h2>Pro 买断</h2>
+  <p class="sec-sub">AI 写工具解锁 · 商用授权 · 一次买断，不做订阅</p>
+  <div class="pillars">
+    <div class="pillar"><div class="ic">🤖</div><h3>AI 直接改画布，不限量</h3>
+      <p>「把这页整理成三层结构」——它直接在图上动手：计划可见、边执行边可见、整回合一步撤销。免费版可试用 30 个写回合，Pro 不限量。</p></div>
+    <div class="pillar"><div class="ic">📄</div><h3>商用授权（附 EULA）</h3>
+      <p>免费版许可禁止商用；Pro 授予公司 / 团队经营使用授权。个人自用其实免费版已经够用。</p></div>
+    <div class="pillar"><div class="ic">🔒</div><h3>不锁机、不联网激活</h3>
+      <p>离线验签、无在线激活：换电脑随意重装，重装不锁机；断网也能用，许可码只在你本机校验。</p></div>
+  </div>
+  <div class="ctas" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px">
+    <a class="btn btn-primary" href="https://mbd.pub/o/bread/YZaVlpdyZA==" target="_blank" rel="noopener">购买 Pro · 早鸟 ¥19（限量 200）</a>
+    <a class="btn btn-ghost" href="#download">先免费下载试用</a>
+  </div>
+  <p style="text-align:center;font-size:13.5px;color:var(--muted);margin-top:18px">
+    正价 ¥39，早鸟 ¥19（限量 200 份，售完即止）· 购买起 1 年内免费更新，期满后最后一版永久可用 · 个人开发者，暂不提供发票<br>
+    支付后立即收到<b>许可码</b>：打开 SMind →「AI 设置 → 许可（Pro）」粘贴即激活 · 7 天内激活失败或与描述严重不符可退
+  </p>
 </section>
 
 <section class="wrap" id="download">
@@ -208,6 +237,9 @@
     <a class="btn btn-primary" href="/download/setup/">安装版（推荐，自动关联 .xmind）</a>
     <a class="btn btn-ghost" href="/download/portable/">免安装绿色版</a>
   </div>
+  <p style="text-align:center;font-size:14px;color:var(--muted);margin-bottom:16px">
+    想解锁「AI 一句话改整张图」？<a href="#pro">看 Pro 买断（早鸟 ¥19 · 限量 200）</a>
+  </p>
   <p style="text-align:center;font-size:13.5px;color:var(--muted)">
     首次运行若提示「Windows 已保护你的电脑 / 未知发布者」：点「更多信息」→「仍要运行」。<br>
     这是软件尚未购买代码签名证书的正常提示，不是病毒；杀毒软件误报同理，加信任即可。
@@ -222,7 +254,7 @@
   <details><summary>为什么体积 107MB？</summary>
     <p>桌面版内置了完整运行时（与主流脑图软件同方案），换来的是真正的离线能力与本地性能。</p></details>
   <details><summary>免费版和 Pro 的区别？</summary>
-    <p>全部导图功能与 AI 聊天永久免费；AI 改图（Agent）免费试用 30 个写回合。Pro（一次性买断 ¥39，早鸟 ¥19）解锁不限量写回合，并附商用授权 EULA。免费的东西永远不会被挖走。</p></details>
+    <p>全部导图功能与 AI 聊天永久免费；AI 改图（Agent）免费试用 30 个写回合。Pro（一次性买断 ¥39，早鸟 ¥19，限量 200 份）解锁不限量写回合，并附商用授权 EULA。<a href="#pro">购买 Pro →</a> 免费的东西永远不会被挖走。</p></details>
   <details><summary>数据真的不出我的电脑？</summary>
     <p>文档、设置、AI 配置全在本机 %APPDATA% 与你选择的目录。只有你主动使用 AI 功能时，才会把相关文本发送到你自己配置的 AI 服务商。</p></details>
   <details><summary>支持 macOS / Linux 吗？</summary>
@@ -233,7 +265,7 @@
   <div class="wrap">
     <div class="cols">
       <div><b>SMind</b><br>本地优先的思维导图软件<br>作者 Wentun</div>
-      <div><b>链接</b><br><a href="https://github.com/tun127/SMind">GitHub 仓库</a><br><a href="https://github.com/tun127/SMind/releases">历史版本</a><br>用户群：见 GitHub 仓库 README</div>
+      <div><b>链接</b><br><a href="https://github.com/tun127/SMind">GitHub 仓库</a><br><a href="https://github.com/tun127/SMind/releases">历史版本</a><br><a href="https://mbd.pub/o/bread/YZaVlpdyZA==" target="_blank" rel="noopener">购买 Pro 授权</a><br>用户群：见 GitHub 仓库 README</div>
       <div><b>联系</b><br>反馈：<a href="https://github.com/tun127/SMind/issues">GitHub Issues</a></div>
     </div>
     <p>
