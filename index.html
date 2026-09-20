@@ -90,6 +90,8 @@
   nav a.nl:hover{color:var(--ink)}
   nav .cta{margin-left:auto;display:flex;gap:10px;align-items:center}
   nav .btn{height:38px;padding:0 16px;font-size:14.5px}
+  /* A3：Pro 入口只提亮文字色（底色/边框/尺寸/主次关系一律不动，免费下载仍是主按钮） */
+  nav .cta .btn-ghost{color:var(--accent)}
 
   /* 按钮 */
   .btn{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 26px;
@@ -116,8 +118,12 @@
   .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;
          color:var(--accent);background:var(--wash);border:1px solid var(--wash-line);
          border-radius:999px;padding:6px 16px;margin-bottom:26px}
+  .badge__dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:0 0 auto}  /* A2：克制的强调点，不用 emoji */
   .hero .sub{max-width:none;margin:20px auto 0;font-size:18px;color:var(--ink);font-weight:400}
-  .hero .fine{margin:12px auto 0;font-size:13px;color:var(--muted)}
+  /* A1：脚注拆成「片段 + 分隔点」——片段不可拆，" · " 处才允许折行，任何宽度都不会出现半个词 */
+  /* max-width:none：meta 行不该被正文的 68ch 行宽限制（否则 1440 下也会折成两行） */
+  .hero .fine{margin:12px auto 0;font-size:13px;color:var(--muted);max-width:none}
+  .hero .fine span{white-space:nowrap}
   .hero .ctas{display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:34px}
 
   /* 截图窗口化 §3.3 */
@@ -254,10 +260,10 @@
 <header class="hero">
   <div class="glow" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="badge">🚀 v0.9 免费发布 · 源码开放</div>
+    <div class="badge"><i class="badge__dot" aria-hidden="true"></i>v0.9 免费发布 · 源码开放</div>
     <h1>你的思维导图，<br>应该以 <em>.xmind 文件</em>的形式属于你</h1>
     <p class="sub">本地优先的思维导图软件：原生 .xmind，与 Xmind 直接互通。</p>
-    <p class="fine">免安装可用 · 约 107 MB · Windows 10/11 64 位 · 买断制，不做订阅 · 除 AI 外全程离线</p>
+    <p class="fine"><span>免安装可用</span> · <span>约 107 MB</span> · <span>Windows 10/11 64 位</span> · <span>买断制，不做订阅</span> · <span>除 AI 外全程离线</span></p>
     <div class="ctas">
       <a class="btn btn-primary" href="#download">免费下载 Windows 版</a>
       <a class="link-arrow" href="https://github.com/tun127/SMind">查看源码 <span>→</span></a>

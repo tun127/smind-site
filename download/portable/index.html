@@ -91,9 +91,14 @@
   var MIRROR   = 'https://dl.smindapp.cn/SMind-0.9.1-x64-portable.exe'
   var FALLBACK = 'https://github.com/tun127/SMind/releases/download/v0.9.1/SMind-0.9.1-x64-portable.exe'
   var btn = document.getElementById('dl')
-  fetch(MIRROR, { method: 'HEAD' })
+  // 探测镜像可用性（**不能删**：它决定用户走 OSS 还是回退 GitHub）。
+  // A4：2.5s 超时 —— 弱网下不拖住按钮，超时/失败一律保持 GitHub 直链，也不留 pending 请求。
+  var ctrl = typeof AbortController === 'function' ? new AbortController() : null
+  var timer = ctrl ? setTimeout(function () { ctrl.abort() }, 2500) : 0
+  fetch(MIRROR, { method: 'HEAD', signal: ctrl ? ctrl.signal : undefined })
     .then(function (r) { if (r.ok) btn.href = MIRROR })
-    .catch(function () { /* 保持 FALLBACK */ })
+    .catch(function () { /* 超时 / 网络失败：保持 FALLBACK */ })
+    .finally(function () { if (timer) clearTimeout(timer) })
 })()
 </script>
 </body>
