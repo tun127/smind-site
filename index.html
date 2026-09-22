@@ -73,14 +73,6 @@
   h2{font-size:31px;text-align:center;margin-bottom:12px}
   .sec-sub{text-align:center;color:var(--muted);margin:0 auto 48px;font-size:16px}
   p{max-width:68ch}
-  /* 下载暂停通知（2026-09-21：v0.9.2 编辑缺陷修复中）—— 用字面色值，避免依赖此处未定义的令牌 */
-  .hold{max-width:660px;margin:0 auto 26px;background:#FFFFFF;border:1px solid rgba(16,24,40,.08);
-        border-left:3px solid #E0A100;border-radius:14px;padding:22px 24px;text-align:left;
-        box-shadow:0 1px 2px rgba(16,24,40,.06)}
-  .hold b{display:block;font-size:16.5px;color:#0F172A;margin-bottom:10px}
-  .hold p{font-size:14.5px;color:#5B6472;margin:8px 0;max-width:64ch}
-  .hold a{color:#3B5BDB}
-  .btn.is-off{background:#5B6472;opacity:.55;cursor:not-allowed;pointer-events:none;box-shadow:none}
 
   /* 顶部滚动进度线 §3.7：scaleX 驱动，不动 width */
   #progress{
@@ -280,7 +272,7 @@
     <a class="nl" href="https://github.com/tun127/SMind">GitHub</a>
     <div class="cta">
       <a class="btn btn-ghost" href="https://ifdian.net/item/46e84c14b4ff11f182e55254001e7c00" target="_blank" rel="noopener">购买 Pro</a>
-      <a class="btn btn-primary" href="#download">下载暂停（修复中）</a>
+      <a class="btn btn-primary" href="#download">免费下载</a>
     </div>
   </div>
 </nav>
@@ -288,12 +280,12 @@
 <header class="hero">
   <div class="glow" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="badge"><i class="badge__dot" aria-hidden="true"></i>v0.9.2 下载暂停（修复中）· 源码开放</div>
+    <div class="badge"><i class="badge__dot" aria-hidden="true"></i>v0.9 免费发布 · 源码开放</div>
     <h1>你的思维导图，<br>应该以 <em>.xmind 文件</em>的形式属于你</h1>
     <p class="sub">本地优先的思维导图软件：原生 .xmind，与 Xmind 直接互通。</p>
     <p class="fine"><span>免安装可用</span> · <span>约 108 MB</span> · <span>Windows 10/11 64 位</span> · <span>买断制，不做订阅</span> · <span>除 AI 外全程离线</span></p>
     <div class="ctas">
-      <a class="btn btn-primary" href="#download">下载暂停（正在修复）</a>
+      <a class="btn btn-primary" href="#download">免费下载 Windows 版</a>
       <a class="link-arrow" href="https://github.com/tun127/SMind">查看源码 <span>→</span></a>
     </div>
   </div>
@@ -474,7 +466,7 @@
   </div>
   <div class="ctas reveal" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px">
     <a class="btn btn-primary" href="https://ifdian.net/item/46e84c14b4ff11f182e55254001e7c00" target="_blank" rel="noopener">购买 Pro · 首月半价 ¥19</a>
-    <a class="btn btn-ghost" href="#download">下载暂停（正在修复）</a>
+    <a class="btn btn-ghost" href="#download">先免费下载试用</a>
   </div>
   <p class="reveal" style="text-align:center;font-size:13px;color:var(--muted);margin-top:14px;max-width:none">爱发电付款后自动发卡、即时可用 · 需登录爱发电账号后下单</p>
   <p class="reveal" style="text-align:center;font-size:13.5px;color:var(--muted);margin-top:20px;max-width:none">
@@ -485,17 +477,10 @@
 
 <section class="wrap" id="download">
   <h2 class="reveal">下载</h2>
-  <p class="sec-sub reveal" style="--i:1">v0.9.2 发现一处已确认的编辑缺陷 · <b>下载暂时关闭</b></p>
-  <div class="hold reveal">
-    <b>⚠️ 正在修复：中文输入法组词时的排版问题</b>
-    <p><b>现象</b>：用中文输入法打字、<b>还没按回车</b>时（拼音 / 候选阶段），编辑框里的文字可能折行、或溢出到节点框外；按回车提交后排版恢复正常。</p>
-    <p><b>影响范围</b>：只影响「输入过程中的显示」。已保存的文件、.xmind 兼容性、数据完整性都不受影响，<b>不会丢内容</b>。</p>
-    <p><b>处理</b>：修复已完成并通过真机验证，正在准备发布；发布后本页立即恢复下载，进度见 <a href="https://github.com/tun127/SMind/releases">Release Notes</a>。</p>
-    <p><b>现在就想用</b>：可到 <a href="https://github.com/tun127/SMind/releases">历史版本</a> 取上一稳定版 v0.9.1。已购买 Pro 的用户不受影响，许可码照常离线激活。</p>
-  </div>
+  <p class="sec-sub reveal" style="--i:1">当前版本 v0.9.3 · 更新内容见 <a href="https://github.com/tun127/SMind/releases">Release Notes</a></p>
   <div class="ctas reveal" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:20px">
-    <span class="btn btn-primary is-off" aria-disabled="true">安装版 · 暂停下载</span>
-    <span class="btn btn-ghost is-off" aria-disabled="true">免安装版 · 暂停下载</span>
+    <a class="btn btn-primary" href="/download/setup/">安装版（推荐，自动关联 .xmind）</a>
+    <a class="btn btn-ghost" href="/download/portable/">免安装绿色版</a>
   </div>
   <p class="reveal" style="text-align:center;font-size:15px;color:var(--muted);margin-bottom:18px;max-width:none">
     想解锁「AI 一句话改整张图」？<a href="#pro">看 Pro 买断（首月半价 ¥19）</a>
